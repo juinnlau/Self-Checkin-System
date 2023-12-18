@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHECKIN</title>
+    <style>
+        /* Global styles */
+        html,
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .flashes {
+            margin-top: 20px;
+        }
+
+        .flashes a {
+            color: #007BFF;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .flashes a:hover {
+            text-decoration: underline;
+        }
+
+        #seatPlan {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        #seatPlan h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .seat_plan {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>SELF CHECK-IN</h1>
+
+    <form id="checkInForm" action="{{ url_for('qrlogin', action='') }}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="button" onclick="submitForm()">CHECK IN</button>
+    </form>
+
+    <div class="flashes">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <a>{{ message }}</a>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    {% if error %}
+        <p style="color: red; text-align: center;">{{ error }}</p>
+    {% endif %}
+
+    <div id="seatPlan" class="seat_plan">
+        <h1>Seat Plan</h1>
+        {% if seat_image_src %}
+            <img src="{{ seat_image_src }}" alt="Seat Plan" class="seat_plan">
+        {% else %}
+            <p style="text-align: center;">No seat image available.</p>
+        {% endif %}
+    </div>
+</body>
+
+<script>
+    function submitForm() {
+        var form = document.getElementById('checkInForm');
+        var qrCodeType = window.location.pathname.split('/').pop();  // Extract QR code type from the current URL
+        form.action = "{{ url_for('qrlogin', action='') }}" + qrCodeType;
+        console.log(form.action);  // Add this line for debugging
+        form.submit();
+    }
+</script>
+
+</html>

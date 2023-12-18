@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        html, body {
+        overflow-x: hidden;
+        width:100%;
+        height:100%;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #313d44;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            
+        }
+
+        hr {
+            border: 1px solid #ddd;
+            margin: 20px 0;
+        }
+
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .qrcode-container {
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: space-between; 
+        }
+
+        .qrcode {
+            flex: 1; 
+            text-align: left; 
+            width: 100%;
+            position: relative; 
+        }
+
+        .qrcode img {
+            display: block; 
+            margin: 0 auto; 
+        }
+
+        .seat_plan {
+            max-width: 100%; 
+           
+            
+        }
+
+        .qr-form {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+
+        .section {
+            display: none;
+        }
+        .section.Section1 {
+            display: block;;
+        }
+        .Section1 {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .seat_plan img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 50%;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 50%;
+        }
+
+        .flashes {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .flashes li {
+            color: red;
+            font-weight: bold;
+        }
+
+        hr {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        @media screen and (max-width: 600px) {
+        .qrcode {
+            flex: 100%; 
+        }
+        }
+
+        @media screen and (max-width: 600px) {
+        .navbar a {
+            float: none;
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+        }
+        .checklist{
+            width: 100%;
+        }
+
+
+        /*-----------------  GOOGLE FONTS  -----------------*/
+                /* cyrillic-ext */
+        @font-face {
+        font-family: 'PT Serif';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/ptserif/v18/EJRVQgYoZZY2vCFuvAFbzr-tdg.woff2) format('woff2');
+        unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+        }
+        /* cyrillic */
+        @font-face {
+        font-family: 'PT Serif';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/ptserif/v18/EJRVQgYoZZY2vCFuvAFSzr-tdg.woff2) format('woff2');
+        unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+        }
+        /* latin-ext */
+        @font-face {
+        font-family: 'PT Serif';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/ptserif/v18/EJRVQgYoZZY2vCFuvAFYzr-tdg.woff2) format('woff2');
+        unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        /* latin */
+        @font-face {
+        font-family: 'PT Serif';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/ptserif/v18/EJRVQgYoZZY2vCFuvAFWzr8.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        /*-----------------  VARIABLES  -----------------*/
+        :root {
+            /* Colors */ 
+            --white_color : rgb(255, 255, 255);
+            --gold_color: rgb(255, 215, 0);
+            --green_color: rgb(45, 252, 26);
+            --body_background: linear-gradient(to right, #141e30, #243b55);
+            --spin_background: linear-gradient(to right, #fc4a1a, #f7b733);
+        }
+        /*-----------------  Base  -----------------*/
+        .Section5 * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: 'PT Serif', serif;
+        }
+        .Section5 body {
+        height: 100vh;
+        background: var(--body_background);
+        }
+        /*-----------------  Styling Start  -----------------*/
+
+        .Section5 .container {
+            width: 90%;
+            max-width: 34.37rem;
+            margin-top: 7cm;
+            max-height: 90vh;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            /* top: 50%; */
+            left: 50%;
+            /* padding: 3rem; */
+            border-radius: 1rem;
+        }
+        .Section5 .wheel_box {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        }
+        .Section5 #spinWheel {
+        max-height: inherit;
+        width: inherit;
+        transform: rotate(270deg);
+        }
+        .Section5 .spin_btn {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        height: 26%;
+        width: 26%;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 0;
+        background: var(--spin_background);
+        color: var(--white_color);
+        text-transform: uppercase;
+        font-size: 1.8rem;
+        letter-spacing: 0.1rem;
+        font-weight: 600;
+        }
+        .Section5 .fa-solid{
+        position: absolute;
+        top: -8%;
+        left: 43.7%;
+        font-size: 4rem;
+        color: var(--green_color);
+        transform: rotate(-225deg);
+        }
+        .Section5 #text {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-top: 1.5rem;
+        color: var(--gold_color);
+        font-weight: 500;
+        }
+    
+        .button-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+    <!---------------  Font Aewsome  --------------------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!---------------  Chart JS  --------------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!---------------  Chart JS Plugin  --------------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.css" integrity="sha512-36F832l13IegJ8Meeg8hlzXU83GBt0Z8oEsh/6rDen/+c13KMnaCnvwEh+h6S3/xz99NTAwusodPl4OMYG5cQQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+   <div class="header" >
+        <!-- Logout Form -->
+        <form action="{{ url_for('logout') }}" method="post">
+            <h1 style="display: inline;">Dashboard</h1>
+            <button type="submit" style="float: right; margin-right:20px"><i class="fa-solid fa-right-from-bracket"></i></button>
+        </form>
+        <hr>
+    </div>
+
+    <div class="navbar">
+        <a href="#section1" onclick="toggleSection('section1')">New Customer Registration</a>
+        <a href="#section2" onclick="toggleSection('section2')">Generate QR Code</a>
+        <a href="#section3" onclick="toggleSection('section3')">QR Code List</a>
+        <a href="#section4" onclick="toggleSection('section4')">Check List</a>
+        <a href="#section5" onclick="toggleSection('section5')">Lucky Wheel</a>
+
+    </div>
+
+    <div class="section Section1" id="section1">
+        <div class="'seat_plan">
+            <h1>Seat Plan </h1>
+            <img src="{{ url_for('static', filename='seat_plan.jpg') }}" alt="Seat Plan" class="seat_plan" >
+        </div>
+
+        <!-- User Registration For New User -->
+        <form action="{{ url_for('user_registration') }}" method="post" onsubmit="trimLastWord()">
+            <h2>New Customer Registration</h2>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required style="width: 50%;">
+            <label for="seat">Seat:</label>
+            <input type="text" id="seat" name="seat" required pattern="\d+" title="Please enter a valid number." style="width: 50%;">
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+        <hr>
+    </div>
+
+
+    <div class="section Section2" id="section2">
+        <!-- Generate QR Code Form -->
+        <form action="{{ url_for('qrgenerator') }}" method="post">
+            <h2>Generate QR Code</h2>
+            <label for="action">Choose an action: </label>
+            <select id="action" name="action" required>
+                <option value="QRCODE-1">QRCODE-1</option>
+                <option value="QRCODE-2">QRCODE-2</option>
+            </select>
+            <input type="hidden" name="column_to_update" value=""> 
+            <!-- Added hidden value -->
+            <br>
+            <br>
+            <button type="submit">Generate QR Code</button>
+        </form>
+    </div>
+
+
+    <div class="section Section3" id="section3">
+        <!-- Display Current QR Code -->
+        <div class='qrcode' id="QRCODE-1">
+            <h1>QR CODE - 1</h1>
+            <hr>
+            <img src="{{ url_for('static', filename='QRCODE-1.png') }}" alt="QRCODE-1 Code">
+            <form action="{{ url_for('delete_qrcode', qr_type='QRCODE-1') }}" method="post">
+                <button type="submit" class="delete-button">Delete QRCODE</button><br>
+            </form>
+            <div class="button-container">
+                <button type="button" class="print-button" onclick="printQRCode('QRCODE-1')">Print</button><br>
+                <button class="download-button" onclick="downloadQRCode('QRCODE-1')">Download as PNG</button>
+            </div>
+        </div>
+        
+        
+        <div class='qrcode' id="QRCODE-2">
+            <h1>QR CODE - 2</h1>
+            <hr>
+            <img src="{{ url_for('static', filename='QRCODE-2.png') }}" alt="QRCODE-2 Code">
+            <form action="{{ url_for('delete_qrcode', qr_type='QRCODE-2') }}" method="post">
+                <button type="submit" class="delete-button">Delete QRCODE</button><br>
+            </form>
+            <div class="button-container">
+                <button class="print-button" onclick="printQRCode('QRCODE-2')">Print</button><br>
+                <button class="download-button" onclick="downloadQRCode('QRCODE-2')">Download as PNG</button>
+            </div>
+
+        </div>
+
+        <hr>
+    </div>
+
+   
+    <div class="section Section4" id="section4" style="background-color: #f2f2f2; padding: 20px;">
+        <form action="{{ url_for('checklist') }}" method="post">
+            <br>
+            <Br>
+            <button type="submit">UPDATE LIST </button>
+            <hr>
+            <div class="checklist">
+                <h1>Checkin 1 List</h1>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                    <thead>
+                        <tr style="background-color: black; color: white;">
+                            <th style="padding: 12px; text-align: left;">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for attendee in checkin1_attendees %}
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 12px;">{{ attendee[0] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="checklist" style="margin-top: 20px;">
+                <h1>Checkin 2 List</h1>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                    <thead>
+                        <tr style="background-color: black; color: white;">
+                            <th style="padding: 12px; text-align: left;">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for attendee in checkin2_attendees %}
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 12px;">{{ attendee[0] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="checklist" style="margin-top: 20px;">
+                <h1>Checkin List for Two Days</h1>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                    <thead>
+                        <tr style="background-color: black; color: white;">
+                            <th style="padding: 12px; text-align: left;">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for attendee in checkin3_attendees %}
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 12px;">{{ attendee[0] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </form>
+    </div>
+    
+    <div class="section Section5" id="section5">
+        <h1>Wheel Of Fortune</h1>
+        <div class="container">
+           <div class="wheel_box">
+            <canvas id="spinWheel"></canvas>
+            <button id="spin_btn" class="spin_btn">Spin</button>
+            <i class="fa-solid fa-location-arrow"></i>
+           </div> 
+          <div id="text"><p>Wheel Of Fortune</p></div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    function checkImageAndToggleDeleteButton(containerId) {
+        var image = document.querySelector(`#${containerId} img`);
+        var deleteButton = document.querySelector(`#${containerId} .delete-button`);
+
+        if (!image.complete || typeof image.naturalWidth === "undefined" || image.naturalWidth === 0) {
+            // Image not found, hide delete button
+            deleteButton.style.display = 'none';
+        } else {
+            // Image found, show delete button
+            deleteButton.style.display = 'block';
+        }
+    }
+    if (performance.navigation.type == 1) {
+        // The page was accessed via the back or forward button
+        window.location.href = '/';  // Redirect to a route that checks authentication
+    }
+        function printQRCode(qrcodeId) {
+        var qrcodeContainer = document.getElementById(qrcodeId);
+        var qrcodeImage = qrcodeContainer.querySelector('img');
+        var printWindow = window.open('', '_blank');
+        printWindow.document.write('<html><head><title>Print</title></head><body>');
+        printWindow.document.write('<img src="' + qrcodeImage.src + '" alt="QR Code">');
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+
+        return false; // Prevent form submission
+    }
+
+    function downloadQRCode(qrType) {
+        var qrcodeImage = document.querySelector('#' + qrType + ' img');
+        var link = document.createElement('a');
+        link.href = qrcodeImage.src;
+        link.download = qrType.toLowerCase() + '_qrcode.png';
+        link.click();
+
+        return false; // Prevent form submission
+    }
+    
+    function trimLastWord() {
+        var nameInput = document.getElementById('name');
+        var seatInput = document.getElementById('seat');
+
+        nameInput.value = nameInput.value.trim();
+        seatInput.value = seatInput.value.trim();
+    }
+
+    function toggleSection(sectionId) {
+        var allSections = document.getElementsByClassName('section');
+        for (var i = 0; i < allSections.length; i++) {
+            allSections[i].style.display = 'none';
+        }
+
+        var section = document.getElementById(sectionId);
+        section.style.display = 'block';
+    }
+
+
+    /* --------------- Spin Wheel  --------------------- */
+    const spinWheel = document.getElementById("spinWheel");
+    const spinBtn = document.getElementById("spin_btn");
+    const text = document.getElementById("text");
+    /* --------------- Minimum And Maximum Angle For A value  --------------------- */
+    const spinValues = [
+    { minDegree: 61, maxDegree: 90, value: 100 },
+    { minDegree: 31, maxDegree: 60, value: 200 },
+    { minDegree: 0, maxDegree: 30, value: 300 },
+    { minDegree: 331, maxDegree: 360, value: 400 },
+    { minDegree: 301, maxDegree: 330, value: 500 },
+    { minDegree: 271, maxDegree: 300, value: 600 },
+    { minDegree: 241, maxDegree: 270, value: 700 },
+    { minDegree: 211, maxDegree: 240, value: 800 },
+    { minDegree: 181, maxDegree: 210, value: 900 },
+    { minDegree: 151, maxDegree: 180, value: 1000 },
+    { minDegree: 121, maxDegree: 150, value: 1100 },
+    { minDegree: 91, maxDegree: 120, value: 1200 },
+    ];
+    /* --------------- Size Of Each Piece  --------------------- */
+
+     
+ 
+
+    /* --------------- Background Colors  --------------------- */
+    var spinColors = [
+    "#E74C3C",
+    "#7D3C98",
+    "#2E86C1",
+    "#138D75",
+    "#F1C40F",
+    "#D35400",
+    "#138D75",
+    "#F1C40F",
+    "#b163da",
+    "#E74C3C",
+    "#7D3C98",
+    "#138D75",
+    ];
+    /* --------------- Chart --------------------- */
+    /* --------------- Guide : https://chartjs-plugin-datalabels.netlify.app/guide/getting-started.html --------------------- */
+    
+    let spinChart;
+    let labels = [];
+    let size = [];
+
+    fetch('/get_checkin3_attendees')
+        .then(response => response.json())
+        .then(data => {
+            for (let i = 0; i < data.length; i++) {
+                let currentName = data[i][0];
+                let formattedName = `${currentName}`;
+                labels.push(formattedName);
+                console.log(`Processing name: ${currentName}, Result: ${formattedName}`);
+            }
+
+            console.log('Final labels array:', labels);
+
+            // Use Array constructor to create an array of a specific length
+            size = Array(labels.length).fill(10);
+
+            console.log('Size is:', size);
+
+            // Create the Chart inside the 'then' block
+            spinChart = new Chart(spinWheel, {
+                plugins: [ChartDataLabels],
+                type: "pie",
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            backgroundColor: spinColors,
+                            data: size,
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    animation: { duration: 0 },
+                    plugins: {
+                        tooltip: false,
+                        legend: {
+                            display: false,
+                        },
+                        datalabels: {
+                            rotation: 90,
+                            color: "#ffffff",
+                            formatter: (_, context) => context.chart.data.labels[context.dataIndex],
+                            font: { size: 24 },
+                        },
+                    },
+                },
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+
+
+
+    /* --------------- Display Value Based On The Angle --------------------- */
+    const generateValue = (angleValue) => {
+    for (let i of spinValues) {
+        if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
+        text.innerHTML = `<p>Congratulations, You Have Won ! </p>`;
+        spinBtn.disabled = false;
+        break;
+        }
+    }
+    };
+    /* --------------- Spinning Code --------------------- */
+    let count = 0;
+    let resultValue = 101;
+    spinBtn.addEventListener("click", () => {
+    spinBtn.disabled = true;
+    text.innerHTML = `<p>Best Of Luck!</p>`;
+    let randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
+    let rotationInterval = window.setInterval(() => {
+        spinChart.options.rotation = spinChart.options.rotation + resultValue;
+        spinChart.update();
+        if (spinChart.options.rotation >= 360) {
+        count += 1;
+        resultValue -= 5;
+        spinChart.options.rotation = 0;
+        } else if (count > 15 && spinChart.options.rotation == randomDegree) {
+        generateValue(randomDegree);
+        clearInterval(rotationInterval);
+        count = 0;
+        resultValue = 101;
+        }
+    }, 10);
+    });
+    /* --------------- End Spin Wheel  --------------------- */
+</script>
+</html>
