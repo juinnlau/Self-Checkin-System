@@ -17,12 +17,16 @@ cursor.execute('''
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS customers (
         name TEXT,
+        seat TEXT,
+        role TEXT,
         registerdate TEXT,
         checkin1 TEXT,
         checkin2 TEXT,
-        seat TEXT
+        checkin3 TEXT
+       
     )
 ''')
+
 
 # Insert a record into the 'admin' table
 #cursor.execute("INSERT INTO admin (username, password) VALUES (?, ?)", ('mforce_admin', 'mforce_admin'))

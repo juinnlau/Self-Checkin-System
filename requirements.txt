@@ -7,3 +7,6 @@ flask_login
 flask_wtf
 wtforms
 bson
+Gunicorn
+waitress
+flask_restful
