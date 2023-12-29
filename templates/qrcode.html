@@ -1,0 +1,220 @@
+<html>
+<html lang="en"></html>
+   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        html, body {
+        overflow-x: hidden;
+        width:100%;
+        height:100%;
+        }
+
+
+        .header {
+            padding-top: 40px;
+        }
+
+        .navbar {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* Responsive Styles */
+        @media (max-width: 767px) {
+            .header {
+                padding-top: 20px;
+            }
+
+            .navbar {
+                padding-top: 20px;
+            }
+
+            .navbar a {
+                display: block;
+                padding: 10px 0;
+                text-align: center;
+            }
+
+            .section {
+                padding: 10px;
+            }
+        }
+    </style>
+
+     
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.js" integrity="sha512-BJ/5sR2hFxQTKin/55JQCcMTObShDBAmVjL/3NR/MVcrhyOazJjAgvROem03+HYyGw16SVdSfoWCFGr9syxAKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+   </head>
+   <body>
+    <div class="header pt-30">
+
+        <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="static/home.png" class="h-8" alt="Logo">
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">KFC</span>
+            </a>
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                
+                <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <li>
+                    <a href="/dashboard" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Home</a>
+                </li>
+                <li>
+                    <a href="/qrcode" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">QRCODE</a>
+                </li>
+                <li>
+                    <a href="/table" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Check-in Tables</a>
+                </li>
+                <li>
+                    <a href="/spinner" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Lucky Wheel</a>
+                </li>
+                <li>
+                    <form action="{{ url_for('logout') }}" method="post">
+                        <button type="submit" style="float: right; margin-right:20px"><i class="fa-solid fa-right-from-bracket"></i></button>
+                    </form>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+        
+    </div>
+    <div class="section Section2 header mt-6" id="section2">
+        <form action="{{ url_for('qrgenerator') }}" method="post">
+            <h2>Generate QR Code</h2>
+            <label for="action">Choose an action: </label>
+            <select id="action" name="action" required>
+                <option disabled selected value> -- SELECT -- </option>
+                <option value="QRCODE-1">QRCODE-1</option>
+                <option value="QRCODE-2">QRCODE-2</option>
+                <option value="QRCODE-3">QRCODE-3</option>
+            </select>
+            <br>
+            <br>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Generate QR Code
+            </button>
+            
+        </form>
+    </div>
+    <div class="section Section3" id="section3">
+        <!-- Display Current QR Code -->
+        <div class='qrcode' id="QRCODE-1">
+            <h1>QR CODE - 1</h1>
+            <hr>
+           <img src="{{ url_for('static', filename='QRCODE-1.png') }}" alt="QRCODE-1 Code">
+
+            <div class="button-container" style="display:inline-flex;align-content: center;">
+                <!-- desiabled duue to caching issues
+                <form action="{{ url_for('delete_qrcode', qr_type='QRCODE-1') }}" method="post">
+                   <button type="submit" class="mx-8 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash-can"></i></button><br>
+                </form> -->
+                <button type="button" class="mx-8 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="printQRCode('QRCODE-1')"><i class="fa-solid fa-print"></i></button><br>
+                <button class="mx-8 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="downloadQRCode('QRCODE-1')"><i class="fa-solid fa-download"></i></button>
+            </div>
+        </div>
+        <br>
+        <div class='qrcode' id="QRCODE-2">
+            <h1>QR CODE - 2 [HOTEL]</h1>
+            <hr>
+            <img src="{{ url_for('static', filename='QRCODE-2.png') }}" alt="QRCODE-2 Code">
+            <div class="button-container" style="display:inline-flex;align-content: center;">
+                <!-- desiabled duue to caching issues
+                <form action="{{ url_for('delete_qrcode', qr_type='QRCODE-2') }}" method="post">
+                    <button type="submit" class="mx-8 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash-can"></i></button><br>
+                </form> -->
+                <button type="button" class="mx-8 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="printQRCode('QRCODE-2')"><i class="fa-solid fa-print"></i></button><br>
+                <button class="mx-8 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="downloadQRCode('QRCODE-2')"><i class="fa-solid fa-download"></i></button>
+            </div>
+        </div>
+        <br>
+        <div class='qrcode' id="QRCODE-3">
+            <h1>QR CODE - 3 [HOTEL]</h1>
+            <hr>
+            <img src="{{ url_for('static', filename='QRCODE-3.png') }}" alt="QRCODE-3 Code">
+            <div class="button-container" style="display:inline-flex;align-content: center;">
+                <!-- desiabled duue to caching issues
+                <form action="{{ url_for('delete_qrcode', qr_type='QRCODE-3') }}" method="post">
+                    <button type="submit" class="mx-8 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash-can"></i></button><br>
+                </form> -->
+                <button type="button" class="mx-8 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="printQRCode('QRCODE-3')"><i class="fa-solid fa-print"></i></button><br>
+                <button class="mx-8 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="downloadQRCode('QRCODE-3')"><i class="fa-solid fa-download"></i></button>
+            </div>
+
+        </div>
+        <br>
+        <hr>
+    </div>
+</body>
+<script>
+        function printQRCode(qrcodeId) {
+        var qrcodeContainer = document.getElementById(qrcodeId);
+        var qrcodeImage = qrcodeContainer.querySelector('img');
+        var printWindow = window.open('', '_blank');
+        printWindow.document.write('<html><head><title>Print</title></head><body>');
+        printWindow.document.write('<img src="' + qrcodeImage.src + '" alt="QR Code">');
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+
+        return false; // Prevent form submission
+    }
+
+    var image = document.querySelector(`#${containerId} img`);
+    var deleteButton = document.querySelector(`#${containerId} .delete-button`);
+
+    if (!image.complete || typeof image.naturalWidth === "undefined" || image.naturalWidth === 0) {
+        // Image not found, hide delete button
+        deleteButton.style.display = 'none';
+    } else {
+        // Image found, show delete button
+        deleteButton.style.display = 'block';
+    }
+    
+
+    function downloadQRCode(qrType) {
+        var qrcodeImage = document.querySelector('#' + qrType + ' img');
+        var link = document.createElement('a');
+        link.href = qrcodeImage.src;
+        link.download = qrType.toLowerCase() + '_qrcode.png';
+        link.click();
+
+        return false; // Prevent form submission
+    }
+</script>
+</html>

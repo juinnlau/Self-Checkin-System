@@ -1,0 +1,289 @@
+<html>
+<html lang="en"></html>
+   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinner</title>
+    <style>
+
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+    body {
+        margin-bottom: 28px;
+    }
+
+
+    #results {
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        height: 80px;
+        padding: 20px;
+        display: none;
+        text-align: center;
+        font-size: 30px;
+        overflow: hidden;
+    }
+    #results ul {
+        margin: 50px 0 0 0;
+        padding: 0;
+        list-style: none;
+    }
+    #results li {
+        margin-top: 20px;
+    }
+
+    #chooser {
+        margin-top: 20px;
+        display: none;
+    }
+    #reminder {
+    float: right;
+    padding: 0.2rem 0.5rem;
+    font-weight: bold
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    </style>
+    <script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.css" integrity="sha512-36F832l13IegJ8Meeg8hlzXU83GBt0Z8oEsh/6rDen/+c13KMnaCnvwEh+h6S3/xz99NTAwusodPl4OMYG5cQQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.js" integrity="sha512-BJ/5sR2hFxQTKin/55JQCcMTObShDBAmVjL/3NR/MVcrhyOazJjAgvROem03+HYyGw16SVdSfoWCFGr9syxAKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="header pt-40">
+
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="static/home.png" class="h-8" alt="Logo">
+            
+        </a>
+        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li>
+                <a href="/dashboard" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Home</a>
+            </li>
+            <li>
+                <a href="/qrcode" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">QRCODE</a>
+            </li>
+            <li>
+                <a href="/table" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Check-in Tables</a>
+            </li>
+            <li>
+                <a href="/spinner" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Lucky Wheel</a>
+            </li>
+            <li>
+                <form action="{{ url_for('logout') }}" method="post">
+                   
+                    <button type="submit" style="float: right; margin-right:20px"><i class="fa-solid fa-right-from-bracket"></i></button>
+                </form>
+            </li>
+            </ul>
+        </div>
+        </div>
+        </nav>
+        
+    </div>
+
+
+    <div class="container">
+        <p class="lead">Lucky Draw</p>
+        <main>
+            <div class="row">
+                <div class="col-xs-12 col-md-5" style="display: none;">
+                    <h2>Enter choices</h2>
+                    <p>Enter each value on a new line. Blank lines will be ignored.</p>
+                    <textarea id="values" class="form-control" rows="15"> {{ spinner_list }} </textarea>
+                
+                </div>
+                <div class="col-xs-12 col-md-5 col-md-offset-2">
+                    <h2>Your Winner:</h2>
+                    <a ></a>
+                    <p id="instructions"><span class="label label-warning">Click the button to spin!</span>
+                    </p>
+                    <div id="results"></div>
+                    <div id="chooser" class="text-center">
+                        <hr>
+                        <button type="button" class="btn btn-success btn-lg">Pick Winner</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+     
+           
+        </main>
+    </div>
+
+
+    <script>
+        (function () {
+
+            /**
+             * The class to manage the random generator
+             * @constructor
+             */
+            var RandomManager = function () {
+                /**
+                 * Initialize the values box
+                 * @type {*|jQuery|HTMLElement}
+                 */
+                var $valuesBox = $('#values');
+
+                /**
+                 * The instructions for the tool
+                 * @type {*|jQuery|HTMLElement}
+                 */
+                var $instructions = $('#instructions');
+
+                /**
+                 * The chooser box
+                 * @type {*|jQuery|HTMLElement}
+                 */
+                var $chooserBox = $('#chooser');
+
+                /**
+                 * The results box
+                 * @type {*|jQuery|HTMLElement}
+                 */
+                var $resultBox = $('#results');
+
+                /**
+                 * The initialization function sort of
+                 *
+                 * This handles adding all the handlers the DOM items
+                 */
+                function addHandlers() {
+                    $valuesBox.on('change keyup blur', handleBoxChange);
+                    $chooserBox.on('click', 'button', chooseWinner);
+                    $chooserBox.fadeIn(500);
+                }
+
+                /**
+                 * When the textarea changes, handle it
+                 */
+
+                 function handleBoxChange() {
+                
+                    if (!($valuesBox.val().trim() === '')) {
+                        // If the input box is not empty
+                        $instructions.fadeOut(200, function () {
+                            $chooserBox.fadeIn(200);
+                        });
+                    } else {
+                        // If the input box is empty
+                        $instructions.fadeOut(200, function () {
+                            $chooserBox.fadeOut(200);
+                        });
+                    }
+                }
+
+
+                /**
+                 * Iterates through the winner and chooses
+                 */
+                function chooseWinner() {
+            
+                    var values = $valuesBox.val().trim().split("\n");
+                    console.log($valuesBox.val())
+                    console.log(values)
+                    if (values.length == 1) {
+                        handleOneWinner(values);
+                    }
+                    else {
+                        var chopIt = false;
+                        // if it's too small, let's add some more to it for a cool look
+                        if (values.length < 20) {
+                            values.push.apply(values, values);
+                        }
+                        else if (values.length > 50) {
+                            chopIt = true;
+                        }
+                        shuffleValues(values);
+                        if (chopIt) {
+                            // if it's too long, the animation will suck!
+                            values = values.slice(0, 50);
+                        }
+
+                        animateResults(values);
+                    }
+                }
+
+                /**
+                 * Show the results in an animated fashion
+                 * @param values
+                 */
+                function animateResults(values) {
+                    $resultBox.show();
+                    $resultBox[0].scrollTop = 0;
+                    $resultBox.empty();
+
+                    var resultList = $('<ul />');
+                    $.each(values, function (i, value) {
+                        var li = document.createElement('li');
+                        li.appendChild(document.createTextNode(value));
+                        resultList.append(li);
+                    });
+
+                    $resultBox.append(resultList);
+
+                    $resultBox.animate({
+                        scrollTop: $resultBox[0].scrollHeight
+                    }, {duration: 6000, queue: false});
+                }
+
+                /**
+                 * Shuffle the values
+                 * @param values
+                 */
+                function shuffleValues(values) {
+                    for (var i = values.length - 1; i > 0; i--) {
+                        var j = Math.floor(Math.random() * (i + 1));
+                        var temp = values[i];
+                        values[i] = values[j];
+                        values[j] = temp;
+                    }
+                }
+
+                /**
+                 * When people are being silly and choose only one entry
+                 */
+                function handleOneWinner(values) {
+                    var winner = values[0];
+                    $('main').html('<div class="jumbotron"><h1>Congratulations!</h1><h2>There is only one winner!</h2><p>You know exactly who it was!!</p>');
+                }
+
+                // init the logic
+                addHandlers();
+            };
+
+            // create the object - it's self managed
+            new RandomManager();
+        })();
+
+    </script>
+</body>
+
+</html>

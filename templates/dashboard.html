@@ -189,157 +189,121 @@
             width: 100%;
         }
 
-
-        /*-----------------  GOOGLE FONTS  -----------------*/
-                /* cyrillic-ext */
-        @font-face {
-        font-family: 'PT Serif';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url(https://fonts.gstatic.com/s/ptserif/v18/EJRVQgYoZZY2vCFuvAFbzr-tdg.woff2) format('woff2');
-        unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+        #results {
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            height: 80px;
+            padding: 20px;
+            display: none;
+            text-align: center;
+            font-size: 30px;
+            overflow: hidden;
         }
-        /* cyrillic */
-        @font-face {
-        font-family: 'PT Serif';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url(https://fonts.gstatic.com/s/ptserif/v18/EJRVQgYoZZY2vCFuvAFSzr-tdg.woff2) format('woff2');
-        unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-        }
-        /* latin-ext */
-        @font-face {
-        font-family: 'PT Serif';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url(https://fonts.gstatic.com/s/ptserif/v18/EJRVQgYoZZY2vCFuvAFYzr-tdg.woff2) format('woff2');
-        unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-        }
-        /* latin */
-        @font-face {
-        font-family: 'PT Serif';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url(https://fonts.gstatic.com/s/ptserif/v18/EJRVQgYoZZY2vCFuvAFWzr8.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        /*-----------------  VARIABLES  -----------------*/
-        :root {
-            /* Colors */ 
-            --white_color : rgb(255, 255, 255);
-            --gold_color: rgb(255, 215, 0);
-            --green_color: rgb(45, 252, 26);
-            --body_background: linear-gradient(to right, #141e30, #243b55);
-            --spin_background: linear-gradient(to right, #fc4a1a, #f7b733);
-        }
-        /*-----------------  Base  -----------------*/
-        .Section5 * {
-            box-sizing: border-box;
+        #results ul {
+            margin: 50px 0 0 0;
             padding: 0;
-            margin: 0;
-            font-family: 'PT Serif', serif;
+            list-style: none;
         }
-        .Section5 body {
-        height: 100vh;
-        background: var(--body_background);
+        #results li {
+            margin-top: 20px;
         }
-        /*-----------------  Styling Start  -----------------*/
 
-        .Section5 .container {
-            width: 90%;
-            max-width: 34.37rem;
-            margin-top: 7cm;
-            max-height: 90vh;
-            position: absolute;
-            transform: translate(-50%, -50%);
-            /* top: 50%; */
-            left: 50%;
-            /* padding: 3rem; */
-            border-radius: 1rem;
+        #chooser {
+            margin-top: 20px;
+            display: none;
         }
-        .Section5 .wheel_box {
-        position: relative;
-        width: 100%;
-        height: 100%;
+        #reminder {
+        float: right;
+        padding: 0.2rem 0.5rem;
+        font-weight: bold
         }
-        .Section5 #spinWheel {
-        max-height: inherit;
-        width: inherit;
-        transform: rotate(270deg);
-        }
-        .Section5 .spin_btn {
-        position: absolute;
-        transform: translate(-50%, -50%);
-        top: 50%;
-        left: 50%;
-        height: 26%;
-        width: 26%;
-        border-radius: 50%;
-        cursor: pointer;
-        border: 0;
-        background: var(--spin_background);
-        color: var(--white_color);
-        text-transform: uppercase;
-        font-size: 1.8rem;
-        letter-spacing: 0.1rem;
-        font-weight: 600;
-        }
-        .Section5 .fa-solid{
-        position: absolute;
-        top: -8%;
-        left: 43.7%;
-        font-size: 4rem;
-        color: var(--green_color);
-        transform: rotate(-225deg);
-        }
-        .Section5 #text {
-        font-size: 1.5rem;
-        text-align: center;
-        margin-top: 1.5rem;
-        color: var(--gold_color);
-        font-weight: 500;
-        }
-    
-        .button-container{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+
+        .button-container {
+            display: flex ;
+
         }
     </style>
     <!---------------  Font Aewsome  --------------------->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.js" integrity="sha512-BJ/5sR2hFxQTKin/55JQCcMTObShDBAmVjL/3NR/MVcrhyOazJjAgvROem03+HYyGw16SVdSfoWCFGr9syxAKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
     <!---------------  Chart JS  --------------------->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <!---------------  Chart JS Plugin  --------------------->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.css" integrity="sha512-36F832l13IegJ8Meeg8hlzXU83GBt0Z8oEsh/6rDen/+c13KMnaCnvwEh+h6S3/xz99NTAwusodPl4OMYG5cQQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    
+    <div class="header pt-20">
+
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="/dashboard" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="static/home.png" class="h-8" alt="Logo">
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">KFC</span>
+            
+        </a>
+
+        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li>
+                <a href="/dashboard" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Home</a>
+            </li>
+            <li>
+                <a href="/qrcode" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">QRCODE</a>
+            </li>
+            <li>
+                <a href="/table" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Check-in Tables</a>
+            </li>
+            <li>
+                <a href="/spinner" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Lucky Wheel</a>
+            </li>
+            <li>
+                <form action="{{ url_for('logout') }}" method="post">
+                   
+                    <button type="submit" style="float: right; margin-right:20px"><i class="fa-solid fa-right-from-bracket"></i></button>
+                </form>
+            </li>
+            </ul>
+        </div>
+        </div>
+        </nav>
+        
+    </div>    
+
+<!-- 
+    logotu form
    <div class="header" >
-        <!-- Logout Form -->
         <form action="{{ url_for('logout') }}" method="post">
             <h1 style="display: inline;">Dashboard</h1>
             <button type="submit" style="float: right; margin-right:20px"><i class="fa-solid fa-right-from-bracket"></i></button>
         </form>
-        <hr>
-    </div>
+        <hr> 
+    </div> -->
 
-    <div class="navbar">
+    <!-- <div class="navbar">
         <a href="#section1" onclick="toggleSection('section1')">New Customer Registration</a>
         <a href="#section2" onclick="toggleSection('section2')">Generate QR Code</a>
         <a href="#section3" onclick="toggleSection('section3')">QR Code List</a>
-        <a href="#section4" onclick="toggleSection('section4')">Check List</a>
-        <a href="#section5" onclick="toggleSection('section5')">Lucky Wheel</a>
+        <a href="/table" onclick="toggleSection('section4');">Check List</a>
+        <a href="/spinner" onclick="toggleSection('section5')">Lucky Wheel</a>
 
-    </div>
+    </div> -->
 
     <div class="section Section1" id="section1">
         <div class="'seat_plan">
@@ -352,10 +316,16 @@
             <h2>New Customer Registration</h2>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required style="width: 50%;">
-            <label for="seat">Seat:</label>
+            <label for="seat">Table:</label>
             <input type="text" id="seat" name="seat" required pattern="\d+" title="Please enter a valid number." style="width: 50%;">
+            <label for="role">Roles:</label>
+            <select id="role" name="role" required style="width: 50%;">
+                <option disabled selected value> -- select an option -- </option>
+                <option value="m">Media</option>
+                <option value="d">Dealer</option>
+            </select>
             <br>
-            <button type="submit">Submit</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
         </form>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -370,14 +340,15 @@
     </div>
 
 
+    <!-- Generate QR Code Form -->
     <div class="section Section2" id="section2">
-        <!-- Generate QR Code Form -->
         <form action="{{ url_for('qrgenerator') }}" method="post">
             <h2>Generate QR Code</h2>
             <label for="action">Choose an action: </label>
             <select id="action" name="action" required>
                 <option value="QRCODE-1">QRCODE-1</option>
                 <option value="QRCODE-2">QRCODE-2</option>
+                <option value="QRCODE-3">QRCODE-3</option>
             </select>
             <input type="hidden" name="column_to_update" value=""> 
             <!-- Added hidden value -->
@@ -388,8 +359,8 @@
     </div>
 
 
+    <!-- Display Current QR Code
     <div class="section Section3" id="section3">
-        <!-- Display Current QR Code -->
         <div class='qrcode' id="QRCODE-1">
             <h1>QR CODE - 1</h1>
             <hr>
@@ -405,7 +376,7 @@
         
         
         <div class='qrcode' id="QRCODE-2">
-            <h1>QR CODE - 2</h1>
+            <h1>QR CODE - 2 [HOTEL]</h1>
             <hr>
             <img src="{{ url_for('static', filename='QRCODE-2.png') }}" alt="QRCODE-2 Code">
             <form action="{{ url_for('delete_qrcode', qr_type='QRCODE-2') }}" method="post">
@@ -418,37 +389,69 @@
 
         </div>
 
+        <div class='qrcode' id="QRCODE-3">
+            <h1>QR CODE - 3 [HOTEL]</h1>
+            <hr>
+            <img src="{{ url_for('static', filename='QRCODE-3.png') }}" alt="QRCODE-3 Code">
+            <form action="{{ url_for('delete_qrcode', qr_type='QRCODE-3') }}" method="post">
+                <button type="submit" class="delete-button">Delete QRCODE</button><br>
+            </form>
+            <div class="button-container">
+                <button class="print-button" onclick="printQRCode('QRCODE-3')">Print</button><br>
+                <button class="download-button" onclick="downloadQRCode('QRCODE-3')">Download as PNG</button>
+            </div>
+
+        </div>
+
         <hr>
-    </div>
+    </div> -->
 
    
     <div class="section Section4" id="section4" style="background-color: #f2f2f2; padding: 20px;">
-        <form action="{{ url_for('checklist') }}" method="post">
+        <form id="checklistForm" action="{{ url_for('checklist') }}" method="post">
             <br>
             <Br>
-            <button type="submit">UPDATE LIST </button>
+            <button style="display:flex" class='updatelist' type="submit" >UPDATE LIST </button>
             <hr>
             <div class="checklist">
-                <h1>Checkin 1 List</h1>
-                <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                <h1>Checkin List [NOBLE SEASON]</h1>
+                <a id="attendeeRatio">Number of current Attendees: {{ checkin_count1 }}/Total</a>
+                <div class="button-container">
+                    <br>
+                    <button class="export-button" onclick="exportExcel('checkin_list1', 1)" style="display: block ;">Export to Excel</button><br>
+                </div>
+                <table class="table1" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
                     <thead>
                         <tr style="background-color: black; color: white;">
                             <th style="padding: 12px; text-align: left;">Name</th>
                         </tr>
                     </thead>
+                    <!-- <tbody>
+                        {% for attendee in checkin1_attendees %}
+                            <tr id="attendee_list1" style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 12px;">{{ attendee[0] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody> -->
                     <tbody>
                         {% for attendee in checkin1_attendees %}
-                            <tr style="border-bottom: 1px solid #ddd;">
+                            <tr class="attendee-row">
                                 <td style="padding: 12px;">{{ attendee[0] }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
                 </table>
+
             </div>
             
             <div class="checklist" style="margin-top: 20px;">
-                <h1>Checkin 2 List</h1>
-                <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                <h1>Checkin List [Hotel A]</h1>
+                <a id="attendeeRatio">Number of current Attendees: {{ checkin_count2 }}/Total</a>
+                <div class="button-container">
+                    <br>
+                    <button class="export-button" onclick="exportExcel('checkin_list2' , 2)" style="display: block ;">Export to Excel</button><br>
+                </div>
+                <table class="table2" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
                     <thead>
                         <tr style="background-color: black; color: white;">
                             <th style="padding: 12px; text-align: left;">Name</th>
@@ -465,8 +468,13 @@
             </div>
             
             <div class="checklist" style="margin-top: 20px;">
-                <h1>Checkin List for Two Days</h1>
-                <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                <h1>Checkin List [Hotel B]</h1>
+                <a id="attendeeRatio">Number of current Attendees: {{ checkin_count3 }}/Total</a>
+                <div class="button-container">
+                    <br>
+                    <button class="export-button" onclick="exportExcel('checkin_list3',3)" style="display: block ;">Export to Excel</button><br>
+                </div>
+                <table class="table3" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
                     <thead>
                         <tr style="background-color: black; color: white;">
                             <th style="padding: 12px; text-align: left;">Name</th>
@@ -485,19 +493,13 @@
         </form>
     </div>
     
-    <div class="section Section5" id="section5">
-        <h1>Wheel Of Fortune</h1>
-        <div class="container">
-           <div class="wheel_box">
-            <canvas id="spinWheel"></canvas>
-            <button id="spin_btn" class="spin_btn">Spin</button>
-            <i class="fa-solid fa-location-arrow"></i>
-           </div> 
-          <div id="text"><p>Wheel Of Fortune</p></div>
-        </div>
-    </div>
+
 
 </body>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
     function checkImageAndToggleDeleteButton(containerId) {
@@ -512,10 +514,12 @@
             deleteButton.style.display = 'block';
         }
     }
-    if (performance.navigation.type == 1) {
-        // The page was accessed via the back or forward button
-        window.location.href = '/';  // Redirect to a route that checks authentication
-    }
+
+    // if (performance.navigation.type == 1) {
+
+    //     window.location.href = '/'; 
+    // }
+
         function printQRCode(qrcodeId) {
         var qrcodeContainer = document.getElementById(qrcodeId);
         var qrcodeImage = qrcodeContainer.querySelector('img');
@@ -528,6 +532,8 @@
 
         return false; // Prevent form submission
     }
+
+
 
     function downloadQRCode(qrType) {
         var qrcodeImage = document.querySelector('#' + qrType + ' img');
@@ -557,137 +563,166 @@
         section.style.display = 'block';
     }
 
+    function exportExcel(filename, tableno) {
+        var selector = '.checklist .table' + tableno;  // Assuming your class name is 'table1', 'table2', etc.
+        var wb = XLSX.utils.book_new();
+        var ws = XLSX.utils.table_to_sheet(document.querySelector(selector));
 
-    /* --------------- Spin Wheel  --------------------- */
-    const spinWheel = document.getElementById("spinWheel");
-    const spinBtn = document.getElementById("spin_btn");
-    const text = document.getElementById("text");
-    /* --------------- Minimum And Maximum Angle For A value  --------------------- */
-    const spinValues = [
-    { minDegree: 61, maxDegree: 90, value: 100 },
-    { minDegree: 31, maxDegree: 60, value: 200 },
-    { minDegree: 0, maxDegree: 30, value: 300 },
-    { minDegree: 331, maxDegree: 360, value: 400 },
-    { minDegree: 301, maxDegree: 330, value: 500 },
-    { minDegree: 271, maxDegree: 300, value: 600 },
-    { minDegree: 241, maxDegree: 270, value: 700 },
-    { minDegree: 211, maxDegree: 240, value: 800 },
-    { minDegree: 181, maxDegree: 210, value: 900 },
-    { minDegree: 151, maxDegree: 180, value: 1000 },
-    { minDegree: 121, maxDegree: 150, value: 1100 },
-    { minDegree: 91, maxDegree: 120, value: 1200 },
-    ];
-    /* --------------- Size Of Each Piece  --------------------- */
+        // Add the worksheet to the workbook
+        XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
-     
- 
-
-    /* --------------- Background Colors  --------------------- */
-    var spinColors = [
-    "#E74C3C",
-    "#7D3C98",
-    "#2E86C1",
-    "#138D75",
-    "#F1C40F",
-    "#D35400",
-    "#138D75",
-    "#F1C40F",
-    "#b163da",
-    "#E74C3C",
-    "#7D3C98",
-    "#138D75",
-    ];
-    /* --------------- Chart --------------------- */
-    /* --------------- Guide : https://chartjs-plugin-datalabels.netlify.app/guide/getting-started.html --------------------- */
-    
-    let spinChart;
-    let labels = [];
-    let size = [];
-
-    fetch('/get_checkin3_attendees')
-        .then(response => response.json())
-        .then(data => {
-            for (let i = 0; i < data.length; i++) {
-                let currentName = data[i][0];
-                let formattedName = `${currentName}`;
-                labels.push(formattedName);
-                console.log(`Processing name: ${currentName}, Result: ${formattedName}`);
-            }
-
-            console.log('Final labels array:', labels);
-
-            // Use Array constructor to create an array of a specific length
-            size = Array(labels.length).fill(10);
-
-            console.log('Size is:', size);
-
-            // Create the Chart inside the 'then' block
-            spinChart = new Chart(spinWheel, {
-                plugins: [ChartDataLabels],
-                type: "pie",
-                data: {
-                    labels: labels,
-                    datasets: [
-                        {
-                            backgroundColor: spinColors,
-                            data: size,
-                        },
-                    ],
-                },
-                options: {
-                    responsive: true,
-                    animation: { duration: 0 },
-                    plugins: {
-                        tooltip: false,
-                        legend: {
-                            display: false,
-                        },
-                        datalabels: {
-                            rotation: 90,
-                            color: "#ffffff",
-                            formatter: (_, context) => context.chart.data.labels[context.dataIndex],
-                            font: { size: 24 },
-                        },
-                    },
-                },
-            });
-        })
-        .catch(error => console.error('Error fetching data:', error));
-
-
-
-    /* --------------- Display Value Based On The Angle --------------------- */
-    const generateValue = (angleValue) => {
-    for (let i of spinValues) {
-        if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
-        text.innerHTML = `<p>Congratulations, You Have Won ! </p>`;
-        spinBtn.disabled = false;
-        break;
-        }
+        // Save the workbook as an Excel file
+        XLSX.writeFile(wb, filename + '.xlsx');
     }
-    };
-    /* --------------- Spinning Code --------------------- */
-    let count = 0;
-    let resultValue = 101;
-    spinBtn.addEventListener("click", () => {
-    spinBtn.disabled = true;
-    text.innerHTML = `<p>Best Of Luck!</p>`;
-    let randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
-    let rotationInterval = window.setInterval(() => {
-        spinChart.options.rotation = spinChart.options.rotation + resultValue;
-        spinChart.update();
-        if (spinChart.options.rotation >= 360) {
-        count += 1;
-        resultValue -= 5;
-        spinChart.options.rotation = 0;
-        } else if (count > 15 && spinChart.options.rotation == randomDegree) {
-        generateValue(randomDegree);
-        clearInterval(rotationInterval);
-        count = 0;
-        resultValue = 101;
+
+    // -------------------------------------------------------------
+    //                          SPINNER TEMPLATE
+    // -------------------------------------------------------------
+    (function(){
+
+    /**
+     * The class to manage the random generator
+     * @constructor
+     */
+    var RandomManager = function() {
+        /**
+         * Initialize the values box
+         * @type {*|jQuery|HTMLElement}
+         */
+        var $valuesBox = $('#values');
+
+        /**
+         * The instructions for the tool
+         * @type {*|jQuery|HTMLElement}
+         */
+        var $instructions = $('#instructions');
+
+        /**
+         * The chooser box
+         * @type {*|jQuery|HTMLElement}
+         */
+        var $chooserBox = $('#chooser');
+
+        /**
+         * The results box
+         * @type {*|jQuery|HTMLElement}
+         */
+        var $resultBox = $('#results');
+
+        /**
+         * The initialization function sort of
+         *
+         * This handles adding all the handlers the DOM items
+         */
+        function addHandlers()
+        {
+            $valuesBox.on('change keyup blur', handleBoxChange);
+            $chooserBox.on('click', 'button', chooseWinner);
         }
-    }, 10);
-    });
-    /* --------------- End Spin Wheel  --------------------- */
+
+        /**
+         * When the textarea changes, handle it
+         */
+        function handleBoxChange()
+        {
+            if ($valuesBox.val().trim() === '') {
+                $resultBox.fadeOut(200).empty();
+                $chooserBox.fadeOut(200, function() {
+                    $instructions.fadeIn(200);
+                });
+            }
+            else {
+                $instructions.fadeOut(200, function() {
+                    $chooserBox.fadeIn(200);
+                });
+            }
+        }
+
+        /**
+         * Iterates through the winner and chooses
+         */
+        function chooseWinner()
+        {
+            var values = $valuesBox.val().trim().split("\n");
+            if (values.length == 1) {
+                handleOneWinner(values);
+            }
+            else {
+                var chopIt = false;
+                // if it's too small, let's add some more to it for a cool look
+                if (values.length < 20) {
+                    values.push.apply(values, values);
+                }
+                else if (values.length > 50) {
+                    chopIt = true;
+                }
+                shuffleValues(values);
+                if (chopIt) {
+                    // if it's too long, the animation will suck!
+                    values = values.slice(0, 50);
+                }
+
+                animateResults(values);
+            }
+        }
+
+        /**
+         * Show the results in an animated fashion
+         * @param values
+         */
+        function animateResults(values)
+        {
+            $resultBox.show();
+            $resultBox[0].scrollTop = 0;
+            $resultBox.empty();
+
+            var resultList = $('<ul />');
+            $.each(values, function(i, value) {
+                var li = document.createElement('li');
+                li.appendChild(document.createTextNode(value));
+                resultList.append(li);
+            });
+
+            $resultBox.append(resultList);
+
+            $resultBox.animate({
+                scrollTop: $resultBox[0].scrollHeight
+            },6000);
+        }
+
+        /**
+         * Shuffle the values
+         * @param values
+         */
+        function shuffleValues(values)
+        {
+            for (var i = values.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = values[i];
+                values[i] = values[j];
+                values[j] = temp;
+            }
+        }
+
+        /**
+         * When people are being silly and choose only one entry
+         */
+        function handleOneWinner(values)
+        {
+            var winner = values[0];
+            $('main').html('<div class="jumbotron"><h1>Congratulations!</h1><h2>There is only one winner!</h2><p>You know exactly who it was!!</p>');
+        }
+
+        // init the logic
+        addHandlers();
+    };
+
+    // create the object - it's self managed
+    new RandomManager();
+    })();
+    // -------------------------------------------------------------
+    //                     END OF SPINNER TEMPLATE
+    // -------------------------------------------------------------
+
 </script>
 </html>

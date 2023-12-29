@@ -16,7 +16,7 @@
             padding: 0;
         }
 
-        h1 {
+        /* h1 {
             color: #333;
             text-align: center;
             margin-bottom: 20px;
@@ -90,40 +90,69 @@
             max-width: 100%;
             display: block;
             margin-top: 20px;
-        }
+        } */
     </style>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+  />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js" integrity="sha512-Rd5Gf5A6chsunOJte+gKWyECMqkG8MgBYD1u80LOOJBfl6ka9CtatRrD4P0P5Q5V/z/ecvOCSYC8tLoWNrCpPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-    <h1>SELF CHECK-IN</h1>
 
-    <form id="checkInForm" action="{{ url_for('qrlogin', action='') }}" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <button type="button" onclick="submitForm()">CHECK IN</button>
-    </form>
+    <div class="container">
+        <p class="font-extrabold text-2xl text-center my-1.5">SELF CHECK-IN </p>
 
-    <div class="flashes">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
+
+        <div class="form-container space-y-12">
+            <form id="checkInForm" action="{{ url_for('qrlogin', action='') }}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                        Name:
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text" placeholder="Your Name" required onkeydown="checkEnter(event)">
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onclick="submitForm()">
+                        Check In
+                    </button>
+                </div>
+            </form>
+        
+            <div class="flashes">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
                 {% for message in messages %}
-                    <a>{{ message }}</a>
+                <p style="color: blue; text-align: center;"><alert>{{ message }}</alert></p>
                 {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+        
+            {% if error %}
+            <p style="color: red; text-align: center;">{{ error }}</p>
             {% endif %}
-        {% endwith %}
-    </div>
+        
+            <div id="seatPlan" class="seat_plan">
+                <h1 class="animate-pulse font-extrabold text-2xl text-center my-1.5">Your Table</h1>
+                {% if seat_image_src %}
+                <img src="{{ seat_image_src }}" alt="Seat Plan" class="w-full rounded-lg shadow-md">
+                {% else %}
+                <p style="text-align: center;">No seat image available.</p>
+                {% endif %}
+            </div>
+        </div>
+        
 
-    {% if error %}
-        <p style="color: red; text-align: center;">{{ error }}</p>
-    {% endif %}
 
-    <div id="seatPlan" class="seat_plan">
-        <h1>Seat Plan</h1>
-        {% if seat_image_src %}
-            <img src="{{ seat_image_src }}" alt="Seat Plan" class="seat_plan">
-        {% else %}
-            <p style="text-align: center;">No seat image available.</p>
-        {% endif %}
     </div>
 </body>
 
@@ -132,9 +161,20 @@
         var form = document.getElementById('checkInForm');
         var qrCodeType = window.location.pathname.split('/').pop();  // Extract QR code type from the current URL
         form.action = "{{ url_for('qrlogin', action='') }}" + qrCodeType;
-        console.log(form.action);  // Add this line for debugging
+        console.log(form.action); 
         form.submit();
     }
+    
+    function checkEnter(event) {
+        if (event.key === 'Enter') {
+            submitForm();
+        }
+    }
+
+
+
+    new WOW().init();
+
 </script>
 
 </html>
